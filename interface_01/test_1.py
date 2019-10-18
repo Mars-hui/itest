@@ -72,6 +72,16 @@ for i in range(1,1001):
         elif i%j==0:
             break
 print(list)
+
+l1=[]
+n=2
+m=2
+for n in range(1,1001):
+    while n<m:
+        if n%m==0:
+            l1=l1.append(n)
+
+print("1000以内"l1)
 '''
 #8、预习后作业：输出100以内的所有质数（只能被1和其本身整除的数）
 class ZhiShu():
