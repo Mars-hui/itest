@@ -1,29 +1,46 @@
 #coding = utf-8
-from common import configHttp
+import unittest,json
+from ddt import ddt,data,unpack
 from common import readExcell
-url = r'E:\training\code\vip3test\interface_03\project\testData\data.xls'
-#读取数据
-xls_values = readExcell.Excel.read_excell(url)
-print(xls_values)
-#处理请求
-#xls_value = ['https://www.wanandroid.com/user/login', 'login', 'post', "{'username':'liangchao','password':'123456'}", '0']
-flags=[]
-for xls_value in xls_values:
-    case1 = configHttp.Request_h(xls_value[0],xls_value[3],xls_value[2])
-    print(xls_value[0],xls_value[3],xls_value[2])
-    r = case1.http_request()
-    r_text = r.text
-    print(r.text)
-    try:
-        flag = r.json()['errorCode']
-    except:
-        if r_text:
-            flag=0
-        else:
-            flag=-1
-    flags.append(flag)
-print(flags)
+import requests
+from common import configHttp1
 
+'''教学'''
 
+readexcel = readExcell.ReadExcel()
+el = readexcel.excleList()
+print("----", el)
+datalist = []
 
+for ele in el:
+    elelist = [ele[1], ele[3], ele[4], ele[5]]
+    datalist.append(elelist)
+# print(datalist)
 
+@ddt
+class TestCase1(unittest.TestCase):
+
+    # print(datalist)
+    @data(*datalist)
+    @unpack
+    def test_normal(self,url,method,data,expect):
+        req = configHttp1.ConfigHttp()
+        res = req.getRequest(method,url,data)
+        print('---',res)
+        print(type(res))
+        # real = res['errorCode']
+        # print(real)
+        # real = str(json.loads(res)['errorCode'])
+        # try:
+        #     # status=self.assertEqual(1,1)
+        #     status = self.assertEqual(real,expect)
+        #     status = 'Success'
+        #     print('返回结果',status)
+        # except AssertionError as msg:
+        #     print(msg)
+        #     status='Error'
+        #     print('返回结果',status)
+        #
+
+if __name__ == '__main__':
+    unittest.main()
