@@ -5,7 +5,6 @@ from ddt import *
 import unittest
 import requests
 
-
 @ddt
 class TestCase(unittest.TestCase):
     # 1、获取数据
@@ -17,6 +16,7 @@ class TestCase(unittest.TestCase):
     @data(*excel_list)
     @unpack
     def test_normal(self,id,url,path,method,data,expect):
+
         print(id,url,path,method,data,expect)
         res = confighttp.GetResponse().sendRequest(method,url,data)
         print("返回",res)
@@ -35,9 +35,8 @@ class TestCase(unittest.TestCase):
             print(reaslt)
 
     #4、写入文件
-        wr.writeData(id, real, reaslt)
-
-
+        print('info',id, real, reaslt,type(id),type(real),type(reaslt))
+        wr.writeData(int(id), real, reaslt)
 
 
 if __name__ == '__main__':

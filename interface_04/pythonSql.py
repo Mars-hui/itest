@@ -1,4 +1,5 @@
 #coding=utf-8
+import cx_Oracle
 
 '''操作数据库'''
 
@@ -29,10 +30,13 @@ fetchall()，返回剩下的
 
 4、select查询数据，开始--创建connection--获取cursor--execute()方法执行---fetch*获取数据--关闭cursor--关闭connection
 '''
-conn = pymysql.connect(host = '10.10.4.223',port=6001,user='weblogic',passwd='weblogic@223',db='orcl',charset='utf8')
-
+# conn = pymysql.connect(host = '10.10.68.164',port=1521,user='si_piccdf_test',passwd='si_piccdf_test',db='orcl',charset='utf8')
+# 'root', 'root123', '127.0.0.1:1521/orcl'
+#conn = cx_Oracle.connect('si_piccdf_test','si_piccdf_test','10.10.68.164:1521/orcl')
+conn = cx_Oracle.connect('yang/yang@11.205.242.38:1521/orcl');
+# conn = pymysql.connect("10.10.68.164:")
 cursor=conn.cursor()
-
+print(cursor)
 sql="select * from sicmain"
 cursor.execute(sql)
 print(cursor.rowcount)

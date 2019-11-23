@@ -2,14 +2,12 @@
 import requests
 
 class GetResponse():
-
     def sendRequest(self,method,url,data):
         if str(method) == 'post':
             res = self.sendPost(url,data)
         else:
             res = self.sendGet(url,data)
         return res
-
 
     def sendPost(self,url,data):
         url_str = url

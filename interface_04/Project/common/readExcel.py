@@ -6,6 +6,7 @@ class ReadExcel():
     def openExcel(self):
         data ='testData'
         excel_dir = os.path.dirname(os.getcwd())+"\\"+data+"\\data.xls"
+        excel_dir = os.getcwd() + "\\" + data+"\\data.xls"
         # print(excel_dir)
         excel_values = xlrd.open_workbook(excel_dir)
         return excel_values

@@ -6,16 +6,18 @@ import os
 class writeExcel(object):
     dir = 'testData'
     excel_dir = os.path.dirname(os.getcwd())+"\\"+dir
+    excel_dir = os.getcwd() + "\\" + dir
     rb = xlrd.open_workbook(excel_dir+"\\data.xls")
-    wb =  copy(rb)
+    wb = copy(rb)
     ws = wb.get_sheet(2)
     # print(ws)
     def writeData(self,id,real,status):
         try:
             print("写入")
-            # self.ws.write(id,2,real)
+            self.ws.write(id,2,real)
             self.ws.write(id,3,status)
             self.wb.save(self.excel_dir+"\\data.xls")
+            print(self.excel_dir+"\\data.xls")
             return 'OK'
         except Exception as m:
             print(m)
@@ -23,3 +25,4 @@ class writeExcel(object):
 
 if __name__ == '__main__':
     w = writeExcel()
+    w.writeData(1,1,1)
