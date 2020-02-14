@@ -19,7 +19,7 @@ class Tree(object):
             return
         queue = [self.root]
         while queue:
-            cur_node = queue.pop(0)
+            cur_node = queue.pop(0)#list.pop(0)移除列表第一个并返回该值
             if  cur_node.lchild is None:
                 cur_node.lchild = node
                 return
@@ -37,7 +37,7 @@ class Tree(object):
         queue = [self.root]
         while queue:
             cur_node = queue.pop(0)
-            print(cur_node.elem,end = ' ')
+            print(cur_node.elem, end=' ')
             if cur_node.lchild is not None:
                 queue.append(cur_node.lchild)
             if cur_node.rchild is not None:
@@ -72,20 +72,20 @@ if __name__ == '__main__':
     tree.add(1)
     tree.add(2)
     tree.add(3)
-    tree.add(4)
-    tree.add(5)
-    tree.add(6)
-    tree.add(7)
-    tree.add(8)
-    tree.add(9)
+    # tree.add(4)
+    # tree.add(5)
+    # tree.add(6)
+    # tree.add(7)
+    # tree.add(8)
+    # tree.add(9)
 
     tree.breadth_travel()
-    print(" ")
-    tree.preorder(tree.root)
-    print(" ")
-    tree.inorder(tree.root)
-    print(" ")
-    tree.posorder(tree.root)
-    print(" ")
+    # print(" ")
+    # tree.preorder(tree.root)
+    # print(" ")
+    # tree.inorder(tree.root)
+    # print(" ")
+    # tree.posorder(tree.root)
+    # print(" ")
 
 
